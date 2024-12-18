@@ -46,7 +46,130 @@ import Layout from '../layouts/Layout.astro';
                   on the first visit in 90% of cases. Our trained technicians
                   have parts on hand to ensure a quick repair.
                 </p>
-                <Units />
+              
+
+
+                <!-- Main Container -->
+<div class="flex flex-col lg:flex-row bg-gray-100 min-h-screen">
+  <!-- Left Sidebar: List of Services -->
+  <div class="w-full lg:w-1/3 bg-blue-800 text-white p-4 lg:h-screen overflow-auto">
+    <h2 class="text-2xl font-bold mb-4">Our Services</h2>
+    <ul>
+      <li
+        class="service-item cursor-pointer p-2 hover:bg-blue-700 transition rounded-md"
+        onclick="showServiceContent(0)"
+      >
+        Air Conditioner Repair
+      </li>
+      <li
+        class="service-item cursor-pointer p-2 hover:bg-blue-700 transition rounded-md"
+        onclick="showServiceContent(1)"
+      >
+        Cooktop Repair
+      </li>
+      <li
+        class="service-item cursor-pointer p-2 hover:bg-blue-700 transition rounded-md"
+        onclick="showServiceContent(2)"
+      >
+        Dishwasher Repair
+      </li>
+      <!-- Add more services here -->
+    </ul>
+  </div>
+
+  <!-- Right Content Area -->
+  <div class="w-full lg:w-2/3 p-4 bg-white">
+    <div id="service-content" class="text-center">
+      <!-- Default Content -->
+      <h3 class="text-3xl font-bold mb-4" id="service-title">
+        Select a Service to View Details
+      </h3>
+      <p id="service-description" class="text-gray-600">
+        Click on any service from the list to see details here.
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile Accordion -->
+<div class="block lg:hidden p-4 bg-blue-800 text-white">
+  <h2 class="text-2xl font-bold mb-4">Services</h2>
+  <!-- Accordion Container -->
+  <div>
+    <!-- Accordion Item -->
+    <div class="mb-2">
+      <button
+        class="accordion-button w-full text-left p-2 bg-blue-700 rounded-md"
+        onclick="toggleAccordion(0)"
+      >
+        Air Conditioner Repair
+      </button>
+      <div class="accordion-content hidden bg-white p-4 text-black">
+        <img
+          src="/path/to/air-conditioner.jpg"
+          alt="Air Conditioner Repair"
+          class="w-full mb-4 rounded-md"
+        />
+        <p>
+          Air conditioners need regular maintenance to function properly. We
+          provide cleaning, tune-ups, and full repair services.
+        </p>
+      </div>
+    </div>
+    <!-- Add more accordion items here -->
+  </div>
+</div>
+
+<script>
+  // Service Content Array
+  const services = [
+    {
+      title: "Air Conditioner Repair",
+      description:
+        "Air conditioners need regular maintenance to function properly. We provide cleaning, tune-ups, and full repair services.",
+      image: "/path/to/air-conditioner.jpg",
+    },
+    {
+      title: "Cooktop Repair",
+      description:
+        "Cooktops are essential kitchen appliances. We repair electrical, gas, and induction cooktops to ensure smooth operation.",
+      image: "/path/to/cooktop.jpg",
+    },
+    {
+      title: "Dishwasher Repair",
+      description:
+        "Dishwashers save time and effort. Our team fixes water drainage, leaks, and operational issues effectively.",
+      image: "/path/to/dishwasher.jpg",
+    },
+  ];
+
+  // Function to Show Service Content on Desktop
+  function showServiceContent(index) {
+    const content = services[index];
+    document.getElementById("service-title").innerText = content.title;
+    document.getElementById("service-description").innerText =
+      content.description;
+
+    document.getElementById("service-content").innerHTML = `
+      <img src="${content.image}" alt="${content.title}" class="w-full mb-4 rounded-md" />
+      <h3 class="text-3xl font-bold mb-4">${content.title}</h3>
+      <p>${content.description}</p>
+    `;
+  }
+
+  // Accordion Function for Mobile
+  function toggleAccordion(index) {
+    const contents = document.querySelectorAll(".accordion-content");
+    contents[index].classList.toggle("hidden");
+  }
+</script>
+
+
+
+
+
+
+
           <!-- Grey коммерческая техника -->
           
                 <h2>
