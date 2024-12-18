@@ -1,0 +1,244 @@
+.full-commercial-machinery {
+    background-color: #F2F1F0;
+    width: 100%;
+}
+
+#full-commercial-machinery-nocolor {
+    background-color: #fff;
+}
+
+.full-commercial-machinery h2 {
+    margin: 0;
+}
+
+.full-commercial-machinery-1920 {
+    width: 100%;
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 3% 3% 2% 3%;
+}
+
+.first-element-without-indentation {
+    padding: 0% 3% 2% 3%;
+}
+
+.header-machinery {
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+
+
+
+
+
+
+.full-conteiner-machinery {
+    width: 100%;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(185px, 1fr));
+    grid-gap: 1.5em;
+}
+
+.full-conteiner-machinery img {
+    border-radius: 0px;
+    box-shadow: none;
+
+}
+
+.content-machinery {
+    display: grid;
+    justify-self: center;
+    border-radius: 7px;
+    padding: 10px 8px;
+    width: 185px;
+    grid-gap: 0.6em;
+    transition: 0.25s;
+}
+
+.content-machinery:hover {
+    box-shadow: 0px 0px 8px 3px rgba(135, 135, 135, 0.2);
+}
+
+.content-machinery-f-d {
+    display: grid;
+    justify-self: center;
+    width: 100%;
+}
+
+.content-machinery-f-d a {
+    display: grid;
+    justify-self: center;
+}
+
+.f-content-machinery {
+    max-width: 140px;
+    min-height: 128px;
+    justify-self: center;
+    align-self: center;
+    margin-top: 7px;
+}
+
+.f-content-machinery img {
+    width: 128px;
+    max-width: 100%;
+    height: 100%;
+    transition: 0.25s;
+    transform: scale(1, 1);
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 1.5px rgba(0, 0, 0, 0.25);
+}
+
+.content-machinery:hover .f-content-machinery img {
+    transform: scale(1.07, 1.07);
+}
+
+.d-content-machinery {
+    width: 100%;
+    display: grid;
+    min-height: 72px;
+    /* margin-top: 7px; */
+}
+
+.d-content-machinery p {
+    justify-self: center;
+    align-self: center;
+    text-align: center;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 600;
+    text-shadow: 0.6px 0.6px 1.2px rgb(102, 102, 102);
+    margin: 0;
+    color: #000;
+}
+
+.but-content-machinery {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    width: 80%;
+    /* margin: 0 10%; */
+    overflow: hidden;
+    text-align: center;
+    background-color: #000;
+    border: solid 1.5px #000;
+    border-radius: 5px;
+    box-shadow: inset 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+
+
+.but-content-machinery:hover {
+    background-color: #ca0913 !important;
+}
+
+.but-content-machinery a {
+    justify-self: center;
+    align-self: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    width: 100%;
+    height: 100%;
+    padding: 2px 0;
+    text-shadow: 1.2px 1.2px 2px black;
+    white-space: nowrap;
+}
+.but-content-machinery-estimates a{
+    padding: 2px 0px;
+}
+
+/* Ссылки выше кнопок */
+.full-commercial-machinery a, 
+.full-conteiner-machinery a {
+    color: #000; /* Черный цвет текста */
+    text-decoration: none; /* Убираем подчеркивание */
+    transition: color 0.25s; /* Плавный переход для цвета */
+}
+
+/* Цвет текста ссылки при наведении выше кнопок */
+.full-commercial-machinery a:hover, 
+.full-conteiner-machinery a:hover {
+    color: #ca0913; /* Красный цвет текста при наведении */
+}
+
+/* Стили для кнопок BOOK US и ESTIMATES */
+.but-content-machinery, 
+.but-content-machinery-estimates {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    width: 80%;
+    text-align: center;
+    background-color: #000; /* Черный фон кнопки по умолчанию */
+    border: solid 1.5px #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.25s; /* Плавный переход для фона */
+}
+
+/* Стили ссылок внутри кнопок */
+.but-content-machinery a, 
+.but-content-machinery-estimates a {
+    color: #fff; /* Белый текст по умолчанию */
+    font-size: 18px;
+    font-weight: 500;
+    text-shadow: 1.2px 1.2px 2px black;
+    text-decoration: none;
+    transition: color 0.25s; /* Плавный переход для цвета текста */
+}
+
+/* При наведении на кнопки */
+.but-content-machinery:hover, 
+.but-content-machinery-estimates:hover {
+    background-color: #ca0913; /* Красный фон при наведении */
+    border-color: #ca0913; /* Опционально: рамка становится красной */
+}
+
+.but-content-machinery:hover a, 
+.but-content-machinery-estimates:hover a {
+    color: #fff; /* Белый текст при наведении */
+}
+
+@media (max-width:768px) {
+  
+    .full-commercial-machinery-1920 {
+        padding: 3% 2%;
+    }
+
+    .full-conteiner-machinery {
+        grid-template-columns: repeat(auto-fit, minmax(142px, 1fr));
+        grid-gap: 1em;
+    }
+
+    .content-machinery {
+        padding: 10px 4px;
+        width: 142px;
+        grid-gap: 0.6em;
+    }
+
+    
+
+    .but-content-machinery a {
+        font-size: 16px;
+    }
+
+    .f-content-machinery img {
+        width: 118px;
+        max-width: 100%;
+    }
+
+    .d-content-machinery {
+        min-height: 66px;
+    }
+
+    .d-content-machinery p {
+        font-size: 18px;
+        line-height: 22px;
+    
+    }
+
+}
