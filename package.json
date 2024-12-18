@@ -11,8 +11,6 @@
   },
   "dependencies": {
     "astro": "^5.0.9"
-    "@astrojs/tailwind": "^5.1.3",
   }
 }
-
 
