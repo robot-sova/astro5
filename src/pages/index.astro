@@ -13,210 +13,118 @@ import Layout from '../layouts/Layout.astro';
 <Megamenu />
   <main>
     <!-- Main Container -->
-   
-    <!DOCTYPE html>
-    <html lang="en">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Responsive Tabs</title>
-      <style>
-        body {
-          margin: 0;
-          font-family: Arial, sans-serif;
-        }
-    
-        /* Mobile Accordion Style */
-        .accordion .tab {
-          border: 1px solid #e9eaec;
-          border-radius: 3px;
-          margin-bottom: 10px;
-        }
-    
-        .accordion input {
-          display: none;
-        }
-    
-        .accordion .tab-title {
-          padding: 10px;
-          display: block;
-          text-transform: uppercase;
-          font-weight: bold;
-          cursor: pointer;
-          background-color: #f1f1f1;
-          color: #333;
-          position: relative;
-        }
-    
-        .accordion .tab-title::after {
-          content: '+';
-          float: right;
-        }
-    
-        .accordion input:checked + .tab-title {
-          background-color: #50a2de;
-          color: white;
-        }
-    
-        .accordion input:checked + .tab-title::after {
-          content: '−';
-        }
-    
-        .accordion .tab-content {
-          display: none;
-          padding: 10px 20px;
-        }
-    
-        .accordion input:checked ~ .tab-content {
-          display: block;
-        }
-    
-        /* Desktop Layout */
-        @media (min-width: 768px) {
-          .accordion {
-            display: flex;
-            flex-direction: row;
-            height: 100vh;
-          }
-    
-          /* Left Column Tabs */
-          .tab-menu {
-            width: 30%;
-            background-color: #003366;
-            padding: 1rem;
-            display: flex;
-            flex-direction: column;
-            color: white;
-          }
-    
-          .tab-menu button {
-            background-color: #004080;
-            color: white;
-            border: none;
-            padding: 15px;
-            margin-bottom: 10px;
-            text-align: center;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-          }
-    
-          .tab-menu button:hover {
-            background-color: #0059b3;
-          }
-    
-          .tab-menu button.active {
-            background-color: #00224d;
-          }
-    
-          /* Right Content Area */
-          .tab-content-container {
-            flex-grow: 1;
-            background-color: #e6e6e6;
-            padding: 2rem;
-            display: none; /* Hidden by default */
-          }
-    
-          .tab-content-container.active {
-            display: block;
-          }
-    
-          .tab-content-container img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 1rem;
-          }
-    
-          .tab-content-container p {
-            font-size: 1rem;
-            color: #333;
-          }
-        }
+    <style>
+      * {box-sizing: border-box}
+      body {font-family: "Lato", sans-serif;}
+      
+      /* Стиль табуляции */
+      #tabs {display: grid;grid-template-columns: 1fr 3fr;}
+      #tabs .tabs-nav {margin: 0;padding: 0;position: relative;border: 1px solid #ccc;background-color: #f1f1f1;}   
+      #tabs  a {display: block;color: black;padding: 22px 16px;width: 100%;text-align: left;cursor: pointer;transition: 0.3s;text-decoration: none;;}		
+      #tabs  a:hover {background-color: #ddd;}
+      #tabs  a.active {background-color: #ccc;}   
+      #tabs .tabs-items {border: 1px solid #ccc;}
+      #tabs .tabs-item {padding: 15px;min-height: 300px;display:none;}
+      #tabs .tabs-item.active {display:block;}
+      #tabs .tabs-item a {display: none;}
+      
+      
+      @media (max-width: 991px){
+        #tabs {grid-template-columns: 1fr;}
+        #tabs .tabs-item a {display: flex;justify-content: space-between;}
+        #tabs a {padding: 10px 16px;}
+        #tabs .tabs-item a:after {content: "+";}
+        #tabs .tabs-nav{display:none}
+        #tabs .tabs-item {min-height: auto;padding: 0;border: 1px solid #e9eaec;margin-bottom: 10px;display: block;}
+        #tabs .tabs-items {border:none;}
+        #tabs .info {padding: 0 16px;}
+        #tabs .tabs-item a.active {background-color: #50a2de;}
+        #tabs .tabs-item a.active:after {content: "-";}
+        #tabs .tabs-item a + .info {display: none;}
+        #tabs .tabs-item a.active + .info {display: block;}	
+      }
       </style>
-    </head>
-    <body>
-      <div class="accordion">
-        <!-- Mobile Accordion -->
-        <div class="tab">
-          <input type="checkbox" id="tab1" name="tab-group">
-          <label for="tab1" class="tab-title">Option 1</label>
-          <div class="tab-content">
-            <p>Content for Option 1</p>
-          </div>
-        </div>
-        <div class="tab">
-          <input type="checkbox" id="tab2" name="tab-group">
-          <label for="tab2" class="tab-title">Option 2</label>
-          <div class="tab-content">
-            <p>Content for Option 2</p>
-          </div>
-        </div>
-        <div class="tab">
-          <input type="checkbox" id="tab3" name="tab-group">
-          <label for="tab3" class="tab-title">Option 3</label>
-          <div class="tab-content">
-            <p>Content for Option 3</p>
-          </div>
-        </div>
-    
-        <!-- Desktop Tabs -->
-        <div class="tab-menu" style="display: none;">
-          <button class="tablinks" onclick="openTab(event, 'tab-content-1')" id="defaultOpen">Option 1</button>
-          <button class="tablinks" onclick="openTab(event, 'tab-content-2')">Option 2</button>
-          <button class="tablinks" onclick="openTab(event, 'tab-content-3')">Option 3</button>
-        </div>
-        <div class="tab-content-container" style="display: none;">
-          <div id="tab-content-1" class="tab-content-container">
-            <p>Content for Option 1</p>
-          </div>
-          <div id="tab-content-2" class="tab-content-container">
-            <p>Content for Option 2</p>
-          </div>
-          <div id="tab-content-3" class="tab-content-container">
-            <p>Content for Option 3</p>
-          </div>
-        </div>
-      </div>
-    
-      <script>
-        // Desktop Tab Switching Functionality
-        function openTab(evt, tabName) {
-          const tabContentContainers = document.querySelectorAll(".tab-content-container");
-          const tabLinks = document.querySelectorAll(".tablinks");
-    
-          // Hide all tab content and remove 'active' class from buttons
-          tabContentContainers.forEach(container => container.classList.remove("active"));
-          tabLinks.forEach(link => link.classList.remove("active"));
-    
-          // Show the current tab's content and add 'active' class to button
-          document.getElementById(tabName).classList.add("active");
-          evt.currentTarget.classList.add("active");
-        }
-    
-        // Open the first tab by default on desktop
-        document.getElementById("defaultOpen").click();
-    
-        // Ensure desktop elements are displayed when width > 768px
-        if (window.innerWidth >= 768) {
-          document.querySelector(".tab-menu").style.display = "flex";
-          document.querySelector(".tab-content-container").style.display = "block";
-        }
-    
-        // Adjust layout dynamically on window resize
-        window.addEventListener("resize", () => {
-          if (window.innerWidth >= 768) {
-            document.querySelector(".tab-menu").style.display = "flex";
-            document.querySelector(".tab-content-container").style.display = "block";
-          } else {
-            document.querySelector(".tab-menu").style.display = "none";
-            document.querySelector(".tab-content-container").style.display = "none";
-          }
-        });
-      </script>
-    </body>
-    </html>
+
+<h1>Вертикальная табуляция</h1>
+
+<p>Нажмите на кнопки внутри меню с вкладками:</p>
+<div id="tabs">
+	<div class="tabs-nav">
+		<a href="#tab-1" class="links active">Лондон</a>
+		<a href="#tab-2" class="links">Париж</a>
+		<a href="#tab-3" class="links">Токио</a>
+	</div>	
+	<div class="tabs-items">
+		<div class="tabs-item active" id="tab-1">
+			<a href="#tab-1" class="links active">Лондон</a>
+			<div class="info">
+				<h3>Лондон</h3>
+				<p>Лондон - столица Англии.</p>
+			</div>	
+		</div>
+		<div class="tabs-item" id="tab-2">
+			<a href="#tab-2" class="links">Париж</a>
+			<div class="info">	
+				<h3>Париж</h3>
+				<p>Париж - столица Франции.</p> 
+			</div>	
+		</div>
+		<div class="tabs-item" id="tab-3">
+			<a href="#tab-3" class="links">Токио</a>
+			<div class="info">
+				<h3>Токио</h3>
+				<p>Токио - столица Японии.</p>
+			</div>
+		</div>		
+	</div>
+</div>  
+
+<script>
+$(function(){
+	
+jQuery('#tabs a.links').click(function(){
+	if (jQuery(window).width() >= 992) { 
+		jQuery('#tabs a.links').removeClass('active');
+		jQuery('a[href="'+jQuery(this).attr('href')+'"]').addClass('active');
+		jQuery('#tabs .tabs-item').removeClass('active')
+		jQuery('.tabs-items').find('a[href="'+jQuery(this).attr('href')+'"]').parent().addClass('active')
+		if(window.location.hash){
+			jQuery('#tabs-nav a[href=' + window.location.hash + ']').click();
+			window.scrollTo(0, jQuery(window.location.hash).offset().top);
+		}
+	} else { 
+		jQuery('#tabs a.links').click(function(){ 
+			jQuery('.tabs-item').removeClass('active')
+			jQuery(this).closest('.tabs-item').addClass('active')
+			if (!jQuery(this).hasClass('active')){
+				jQuery('#tabs a.links').removeClass('active').next().slideUp(500);
+				jQuery('a[href="'+jQuery(this).attr('href')+'"]').addClass('active').next().slideDown(500);
+			}
+			return false;
+		})
+	}		
+
+	return false;
+	});
+});
+
+jQuery(window).resize(function() {
+	if (jQuery(window).width() < 992) { //мелкоэкраны
+		jQuery('#tabs a.links:not(.active)').next().slideUp();
+		jQuery('#tabs .tabs-item').css('display','block');
+	} else {
+		jQuery('#tabs .tabs-item:not(.active)').css('display','none');
+		jQuery('#tabs .tabs-items .info').css('display','block');
+		jQuery('#tabs .tabs-nav .links').css('display','block');; 
+	}
+});
+
+
+</script>
+ 
     
     
   </main>
 <Cta />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </Layout>
