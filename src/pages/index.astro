@@ -12,7 +12,6 @@ import Layout from '../layouts/Layout.astro';
 <Layout>
 
   <main>
-
 	<div class="tabs-container">
 		<!-- Tabs Section -->
 		<div class="tabs">
@@ -56,8 +55,6 @@ import Layout from '../layouts/Layout.astro';
 		  </div>
 		</div>
 	  </div>
-	
-	  
 	  <style>
 /* General Reset */
 body {
@@ -143,9 +140,39 @@ button:hover {
   background-color: #00509e;
 }
 
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tabs-container {
+    flex-direction: column;
+  }
+
+  .tabs {
+    flex-direction: row;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid #ccc;
+  }
+
+  .tab {
+    flex: 1;
+    text-align: center;
+    border-bottom: none;
+    border-right: 1px solid #004080;
+  }
+
+  .tab:last-child {
+    border-right: none;
+  }
+
+  .tab-content {
+    padding: 15px;
+  }
+}
+
+
 	  </style>
 	  <script>
-		// script.js
+// script.js
 document.addEventListener("DOMContentLoaded", () => {
   const tabs = document.querySelectorAll(".tab");
   const contents = document.querySelectorAll(".content");
