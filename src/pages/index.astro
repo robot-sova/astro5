@@ -10,121 +10,163 @@ import Layout from '../layouts/Layout.astro';
 ---
    
 <Layout>
-<Megamenu />
+
   <main>
-    <!-- Main Container -->
-    <style>
-      * {box-sizing: border-box}
-      body {font-family: "Lato", sans-serif;}
-      
-      /* Стиль табуляции */
-      #tabs {display: grid;grid-template-columns: 1fr 3fr;}
-      #tabs .tabs-nav {margin: 0;padding: 0;position: relative;border: 1px solid #ccc;background-color: #f1f1f1;}   
-      #tabs  a {display: block;color: black;padding: 22px 16px;width: 100%;text-align: left;cursor: pointer;transition: 0.3s;text-decoration: none;;}		
-      #tabs  a:hover {background-color: #ddd;}
-      #tabs  a.active {background-color: #ccc;}   
-      #tabs .tabs-items {border: 1px solid #ccc;}
-      #tabs .tabs-item {padding: 15px;min-height: 300px;display:none;}
-      #tabs .tabs-item.active {display:block;}
-      #tabs .tabs-item a {display: none;}
-      
-      
-      @media (max-width: 991px){
-        #tabs {grid-template-columns: 1fr;}
-        #tabs .tabs-item a {display: flex;justify-content: space-between;}
-        #tabs a {padding: 10px 16px;}
-        #tabs .tabs-item a:after {content: "+";}
-        #tabs .tabs-nav{display:none}
-        #tabs .tabs-item {min-height: auto;padding: 0;border: 1px solid #e9eaec;margin-bottom: 10px;display: block;}
-        #tabs .tabs-items {border:none;}
-        #tabs .info {padding: 0 16px;}
-        #tabs .tabs-item a.active {background-color: #50a2de;}
-        #tabs .tabs-item a.active:after {content: "-";}
-        #tabs .tabs-item a + .info {display: none;}
-        #tabs .tabs-item a.active + .info {display: block;}	
-      }
-      </style>
 
-<h1>Вертикальная табуляция</h1>
-
-<p>Нажмите на кнопки внутри меню с вкладками:</p>
-<div id="tabs">
-	<div class="tabs-nav">
-		<a href="#tab-1" class="links active">Лондон</a>
-		<a href="#tab-2" class="links">Париж</a>
-		<a href="#tab-3" class="links">Токио</a>
-	</div>	
-	<div class="tabs-items">
-		<div class="tabs-item active" id="tab-1">
-			<a href="#tab-1" class="links active">Лондон</a>
-			<div class="info">
-				<h3>Лондон</h3>
-				<p>Лондон - столица Англии.</p>
-			</div>	
+	<div class="tabs-container">
+		<!-- Tabs Section -->
+		<div class="tabs">
+		  <div class="tab" data-target="content1">Air Conditioner Repair</div>
+		  <div class="tab" data-target="content2">Cooktop Repair</div>
+		  <div class="tab" data-target="content3">Dishwasher Repair</div>
+		  <div class="tab" data-target="content4">Dryer Repair</div>
 		</div>
-		<div class="tabs-item" id="tab-2">
-			<a href="#tab-2" class="links">Париж</a>
-			<div class="info">	
-				<h3>Париж</h3>
-				<p>Париж - столица Франции.</p> 
-			</div>	
-		</div>
-		<div class="tabs-item" id="tab-3">
-			<a href="#tab-3" class="links">Токио</a>
-			<div class="info">
-				<h3>Токио</h3>
-				<p>Токио - столица Японии.</p>
-			</div>
-		</div>		
-	</div>
-</div>  
-
-<script>
-$(function(){
 	
-jQuery('#tabs a.links').click(function(){
-	if (jQuery(window).width() >= 992) { 
-		jQuery('#tabs a.links').removeClass('active');
-		jQuery('a[href="'+jQuery(this).attr('href')+'"]').addClass('active');
-		jQuery('#tabs .tabs-item').removeClass('active')
-		jQuery('.tabs-items').find('a[href="'+jQuery(this).attr('href')+'"]').parent().addClass('active')
-		if(window.location.hash){
-			jQuery('#tabs-nav a[href=' + window.location.hash + ']').click();
-			window.scrollTo(0, jQuery(window.location.hash).offset().top);
-		}
-	} else { 
-		jQuery('#tabs a.links').click(function(){ 
-			jQuery('.tabs-item').removeClass('active')
-			jQuery(this).closest('.tabs-item').addClass('active')
-			if (!jQuery(this).hasClass('active')){
-				jQuery('#tabs a.links').removeClass('active').next().slideUp(500);
-				jQuery('a[href="'+jQuery(this).attr('href')+'"]').addClass('active').next().slideDown(500);
-			}
-			return false;
-		})
-	}		
+		<!-- Content Section -->
+		<div class="tab-content">
+		  <div id="content1" class="content active">
+			<h2>Air Conditioner Repair</h2>
+			<img src="air-conditioner.jpg" alt="Air Conditioner" class="tab-image">
+			<p>
+			  Air conditioners are probably one of man’s greatest inventions. To keep them working properly,
+			  regular maintenance is required.
+			</p>
+			<button>Fix My Air Conditioner</button>
+		  </div>
+	
+		  <div id="content2" class="content">
+			<h2>Cooktop Repair</h2>
+			<img src="cooktop.jpg" alt="Cooktop" class="tab-image">
+			<p>Cooktops require regular maintenance to ensure optimal performance.</p>
+			<button>Fix My Cooktop</button>
+		  </div>
+	
+		  <div id="content3" class="content">
+			<h2>Dishwasher Repair</h2>
+			<img src="dishwasher.jpg" alt="Dishwasher" class="tab-image">
+			<p>A properly functioning dishwasher saves time and energy.</p>
+			<button>Fix My Dishwasher</button>
+		  </div>
+	
+		  <div id="content4" class="content">
+			<h2>Dryer Repair</h2>
+			<img src="dryer.jpg" alt="Dryer" class="tab-image">
+			<p>Dryers need periodic checks and maintenance to ensure efficiency.</p>
+			<button>Fix My Dryer</button>
+		  </div>
+		</div>
+	  </div>
+	
+	  
+	  <style>
+/* General Reset */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f7f7f7;
+}
 
-	return false;
-	});
+/* Tabs Container */
+.tabs-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 20px auto;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+
+/* Tabs Section */
+.tabs {
+  flex: 1;
+  background-color: #003366;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.tab {
+  padding: 15px;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid #004080;
+  transition: background-color 0.3s ease;
+}
+
+.tab:hover {
+  background-color: #00509e;
+}
+
+.tab.active {
+  background-color: #004080;
+}
+
+/* Content Section */
+.tab-content {
+  flex: 3;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  background-color: #ffffff;
+}
+
+.content {
+  display: none;
+}
+
+.content.active {
+  display: block;
+}
+
+/* Content Styling */
+.tab-image {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #004080;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #00509e;
+}
+
+	  </style>
+	  <script>
+		// script.js
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelectorAll(".tab");
+  const contents = document.querySelectorAll(".content");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", () => {
+      // Remove active class from all tabs and contents
+      tabs.forEach((t) => t.classList.remove("active"));
+      contents.forEach((c) => c.classList.remove("active"));
+
+      // Add active class to the clicked tab and corresponding content
+      tab.classList.add("active");
+      const target = tab.getAttribute("data-target");
+      document.getElementById(target).classList.add("active");
+    });
+  });
 });
 
-jQuery(window).resize(function() {
-	if (jQuery(window).width() < 992) { //мелкоэкраны
-		jQuery('#tabs a.links:not(.active)').next().slideUp();
-		jQuery('#tabs .tabs-item').css('display','block');
-	} else {
-		jQuery('#tabs .tabs-item:not(.active)').css('display','none');
-		jQuery('#tabs .tabs-items .info').css('display','block');
-		jQuery('#tabs .tabs-nav .links').css('display','block');; 
-	}
-});
 
-
-</script>
- 
-    
+	  </script>
     
   </main>
-<Cta />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
 </Layout>
