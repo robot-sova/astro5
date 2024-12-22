@@ -13,13 +13,16 @@ import Layout from '../layouts/Layout.astro';
 
   <main>
 	<div class="tabs-container">
-		<!-- Tabs Section -->
+		<!-- Scroll Hint -->
+		<div class="scroll-hint">Swipe or scroll to see more options</div>
 		<div class="tabs">
 		  <div class="tab" data-target="content1">Air Conditioner Repair</div>
 		  <div class="tab" data-target="content2">Cooktop Repair</div>
 		  <div class="tab" data-target="content3">Dishwasher Repair</div>
 		  <div class="tab" data-target="content4">Dryer Repair</div>
 		</div>
+		<div class="tab-content">
+		
 	
 		<!-- Content Section -->
 		<div class="tab-content">
@@ -169,6 +172,83 @@ button:hover {
   }
 }
 
+/* Add a gradient fade at the edges to show scrollability */
+.tabs-container {
+  position: relative;
+}
+
+.tabs::before,
+.tabs::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.tabs::before {
+  left: 0;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), transparent);
+}
+
+.tabs::after {
+  right: 0;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.2), transparent);
+}
+
+/* Make the scrollbar visible */
+.tabs {
+  flex-direction: row;
+  overflow-x: auto;
+  white-space: nowrap;
+  border-bottom: 1px solid #ccc;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch; /* For better mobile scrolling */
+}
+
+.tabs::-webkit-scrollbar {
+  height: 6px;
+}
+
+.tabs::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 3px;
+}
+
+.tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Add partial overflow to show more tabs */
+.tab {
+  flex: 1 0 auto; /* Prevent tabs from shrinking completely */
+  min-width: 120px; /* Ensure each tab is wide enough */
+  text-align: center;
+  border-bottom: none;
+  border-right: 1px solid #004080;
+}
+
+.tab:last-child {
+  border-right: none;
+}
+
+/* Hint Text */
+.scroll-hint {
+  text-align: center;
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 5px;
+  display: none;
+}
+
+/* Show the hint text on mobile screens */
+@media (max-width: 768px) {
+  .scroll-hint {
+    display: block;
+  }
+}
 
 	  </style>
 	  <script>
@@ -189,6 +269,15 @@ document.addEventListener("DOMContentLoaded", () => {
       document.getElementById(target).classList.add("active");
     });
   });
+  
+});
+
+// Smoothly scroll the tabs to the right when the page loads
+document.addEventListener("DOMContentLoaded", () => {
+  const tabs = document.querySelector(".tabs");
+  setTimeout(() => {
+    tabs.scrollBy({ left: 50, behavior: "smooth" });
+  }, 1000); // Delay to ensure the user notices
 });
 
 
