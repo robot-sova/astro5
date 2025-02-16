@@ -1,6 +1,7 @@
 ---
 import Welcome from '../components/Welcome.astro';
 import Megamenu from '../components/megamenu.astro';
+import ParallaxHeader from "../components/ParallaxHeader";
 import Cta from '../components/cta.astro';
 import Units from '../components/units-appliances-los-angeles.astro';
 import { TabsAccordion } from '../components/TabsAccordion.jsx'
@@ -15,6 +16,7 @@ import Layout from '../layouts/Layout.astro';
 
   <main>
 <Megamenu />
+<ParallaxHeader client:idle/>
 <p> Need fast, reliable appliance repair? Look no further! Our team offers same-day, expert repair services for all major home and commercial appliances, including refrigerators, freezers, washers, dryers, dishwashers, stoves, ovens, microwaves, ice machines, fireplaces, BBQ grills, cooktops, range hoods, walk-in coolers, HVAC systems, and more.
 
   We’re trusted by customers throughout Los Angeles and the surrounding areas to repair top brands like KitchenAid, Frigidaire, LG, Samsung, GE, Sub-Zero, Wolf, Cove, Whirlpool, Monogram, Miele, Bosch, Thermador, and many others. Our licensed, insured, and factory-trained technicians often carry parts in stock, meaning we can fix most appliance issues on the spot!
